@@ -16,21 +16,19 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-arr = []
+time = []
+pay = []
+
+for _ in range(n):
+    t, p = map(int, input().split())
+    time.append(t)
+    pay.append(p)
+
+dp = [0] * (n+1)
 
 for i in range(n):
-    t, p = map(int, input().split())
-    heapq.heappush(arr, (-p, t, i+1))
-    
-answer = 0
-checked = [False] * (n+2)
-
-while arr:
-    pay, time, start = heapq.heappop(arr)
-    end = start + time - 1
-    if end <= n and all(not checked[d] for d in range(start, end + 1)):
-        answer += -pay
-        for d in range(start, end+1):
-            checked[d] = True
+    dp[i+1] = max(dp[i+1], dp[i])
+    if i + time[i] <= n:
+        dp[i + time[i]] = max(dp[i+time[i]], dp[i]+pay[i])
             
-print(answer)
+print(dp[n])
