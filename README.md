@@ -1,4 +1,4 @@
-# review - 다익스트라
+# 구현
 
 - [12100 - 2048(easy)](https://www.acmicpc.net/problem/12100)(민정)
 - [14501 - 퇴사](https://www.acmicpc.net/problem/14501) (유빈)
